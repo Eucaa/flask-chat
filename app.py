@@ -8,7 +8,7 @@ it will redirect us to our personal homepage. Add 'request' and 'session' to the
 The session-cookie will cease to exist once the browser has been totally closed off.
 """
 app = Flask(__name__)
-app.secret_key = "randonstrgin123" #Generally in production, this will be set as an environment variable like an IP address import.
+app.secret_key = "randonstring123" #Generally in production, this will be set as an environment variable like an IP address import.
 messages = []
 
 def add_message(username, message):
@@ -28,6 +28,7 @@ def add_message(username, message):
 @app.route('/', methods = ["GET","POST"]) #Create these methods to make "GET" and "POST" active, in correspondance with index.html.
 def index():
 
+    """Main page with instructions"""
     if request.method == "POST": #If request.method is equal to "POST" then create a new var in session called ["username"].
         session["username"] = request.form["username"] #The ["username"] of session must be equal to that of the request.form.
 
@@ -35,9 +36,9 @@ def index():
         return redirect (url_for("user", username=session["username"])) 
 
     return render_template("index.html")
-"""Main page with instructions"""
 
-@app.route("/chat/<username>", methods= ["GET","POST"]) 
+
+@app.route("/chat/<username>", methods= ["GET", "POST"]) 
 #The 'user view'. Written this way, it will get treated as a variable. "GET" and "POST" correspond with chat.html.
 
 def user(username): #This function is going to bind to the root decorator above ( @app.route ).

@@ -25,7 +25,7 @@
         <script>
             let textbox = document.getElementById("message")
 
-            let timer = setTimerout(function() {  //This built-in JavaScript setTimeout() function runs a function at a given interval.
+            let timer = setTimeout(function() {  //This built-in JavaScript setTimeout() function runs a function at a given interval.
                 location.reload(true); //function() is location.reload, which will refresh the page.
             }, 5000) //The second argument is this (time)value, this will refresh the page every 5000 miliseconds (or 5 seconds) and show new messages.
 
