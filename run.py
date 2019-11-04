@@ -54,3 +54,11 @@ def user(username): #This function is going to bind to the root decorator above 
 
 #app.run(host=os.getenv('IP'), port=int(os.getenv('PORT')), debug=True)
 
+if __name__ == '__main__':
+    port_number = os.environ.get('PORT')
+    if isinstance(port_number, str):
+        port_number = int(port_number)
+    if not port_number:
+        port_number = 5000
+    app.run(debug=False, host="0.0.0.0", port=port_number)
+
