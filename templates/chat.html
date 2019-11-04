@@ -10,15 +10,34 @@
 
     <body>
         <h2>Hello there, {{ username }} </h2>
+
+        <form method="POST">
+            <textarea cols="50" rows="4" name="message" id="message"></textarea>
+            <br>
+            <button>Send message</button>
+        </form>
+
         {% for message in chat_messages %}
             <p>({{ message.timestamp }}) {{ message.from }}: {{ message.message }}</p>
 
         {% endfor %}
         
         <script>
+            let textbox = document.getElementById("message")
+
             let timer = setTimerout(function() {  //This built-in JavaScript setTimeout() function runs a function at a given interval.
-                location.reload() //function() is location.reload, which will refresh the page.
+                location.reload(true); //function() is location.reload, which will refresh the page.
             }, 5000) //The second argument is this (time)value, this will refresh the page every 5000 miliseconds (or 5 seconds) and show new messages.
+
+            textbox.onkeydown = function(e) {  //The onkeydown() function runs whenever there's a key pressed.
+
+                clearTimeout(timer) //The clearTimeout() function stops the timer, and the code afterwards starts it again.
+
+                timer = setTimeout(function()) {
+                    location.reload(true);
+                }, 5000) //Get 5 seconds per key press before the page refreshes, which should be sufficient to type a message.
+            }
+        
         </script>
 
     </body>
