@@ -1,0 +1,25 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>{{ username }}'s chat page</title>
+
+        
+    </head>
+
+    <body>
+        <h2>Hello there, {{ username }} </h2>
+        {% for message in chat_messages %}
+            <p>({{ message.timestamp }}) {{ message.from }}: {{ message.message }}</p>
+
+        {% endfor %}
+        
+        <script>
+            let timer = setTimerout(function() {  //This built-in JavaScript setTimeout() function runs a function at a given interval.
+                location.reload() //function() is location.reload, which will refresh the page.
+            }, 5000) //The second argument is this (time)value, this will refresh the page every 5000 miliseconds (or 5 seconds) and show new messages.
+        </script>
+
+    </body>
+</html>
